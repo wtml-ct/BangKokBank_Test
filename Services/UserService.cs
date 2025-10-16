@@ -31,13 +31,13 @@ namespace BangKokBank.Services
         }
 
 
-        // ดึงผู้ใช้ทั้งหมด
+        // get All
         public async Task<List<User>> GetAllAsync()
         {
             return await _dbcontext.Users.ToListAsync();
         }
 
-        // ดึงผู้ใช้ตาม ID 
+        // get by ID 
         public async Task<User?> GetByIdAsync(long userid)
         {
             return await _dbcontext.Users
@@ -45,7 +45,7 @@ namespace BangKokBank.Services
                                    .FirstOrDefaultAsync();
         }
 
-        // สร้างผู้ใช้ใหม่
+        // Create
         public async Task<User> CreateAsync(User user)
         {
             _dbcontext.Users.Add(user);
@@ -53,7 +53,7 @@ namespace BangKokBank.Services
             return user;
         }
 
-        // อัปเดตผู้ใช้
+        // Update
         public async Task<bool> UpdateAsync(long userid, User updatedUser)
         {
             var user = await _dbcontext.Users
@@ -71,7 +71,7 @@ namespace BangKokBank.Services
             return true;
         }
 
-        // ลบผู้ใช้ 
+        // Delete 
         public async Task<bool> DeleteAsync(long userid)
         {
             var user = await _dbcontext.Users
